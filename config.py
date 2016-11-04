@@ -1,0 +1,12 @@
+UTORRENT_USER = 'quaark'
+UTORRENT_PASS = 'quaark'
+UTORRENT_URL = '127.0.0.1'
+UTORRENT_PORT = '57274'
+
+
+UTORRENT_CREDENTIALS = {
+    'url': UTORRENT_URL,
+    'port': UTORRENT_PORT,
+    'user': UTORRENT_USER,
+    'password': UTORRENT_PASS
+}
