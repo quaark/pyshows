@@ -41,7 +41,7 @@ And also set the default downloads folder. (e.g. The folder that plex will scan 
 UTORRENT_USER = 'user'
 UTORRENT_PASS = 'pass'
 UTORRENT_URL = '127.0.0.1'
-UTORRENT_PORT = '57274'
+UTORRENT_PORT = 57274
 ```
 
 ### For mac or linux create a cron (For windows try a different scheduling options)
