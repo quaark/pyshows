@@ -51,7 +51,7 @@ crontab -e
 ```
 This will open an editor where you will write the cron. This example will run the cron every day at 6 a.m.
 ```sh
-0 6 * * *	python2.7 <downloaded repository path>/main.py
+0 6 * * *	cd <downloaded repository path> && ./main.py > /tmp/pyshows.log 2> /tmp/pyshows.err.log
 ```
 
 That's It!
