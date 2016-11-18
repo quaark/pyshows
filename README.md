@@ -1,7 +1,7 @@
 # PyShows
 
 PyShows is a tool for keeping up to date with your favorite tv shows.
-With 4 simple steps you'll never have to worry about downloading the episodes when they are released.
+With 5 simple steps you'll never have to worry about downloading the episodes when they are released.
 
 ### Clone or download the repository & install requirements
 Download the repository and put the content in a path that won't change

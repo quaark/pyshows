@@ -1,6 +1,6 @@
-import requests
 import re
 import json
+import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 # Disable the Insecure Connection warning
@@ -35,9 +35,9 @@ class UTorrent(object):
         Authenticates the session and saves the cookies.
         '''
         token_url = self._url + 'token.html'
-        r = requests.get(token_url, auth=self._auth)
-        self._token = re.search(self.REGEX_UTORRENT_TOKEN, r.text).group(1)
-        guid = r.cookies['GUID']
+        resonse = requests.get(token_url, auth=self._auth)
+        self._token = re.search(self.REGEX_UTORRENT_TOKEN, resonse.text).group(1)
+        guid = resonse.cookies['GUID']
         self._cookies = dict(GUID=guid)
 
     def add_torrent(self, link):
@@ -46,12 +46,12 @@ class UTorrent(object):
 
         :param str link: Magnet link or file path to add to utorrent
         '''
-        params = {'action':'add-url','token': self._token}
+        params = {'action':'add-url', 'token': self._token}
         files = {'s': link}
-        r = requests.post(url=self._url,
-                          auth=self._auth,
-                          cookies=self._cookies,
-                          params=params,
-                          files=files)
-        build = json.loads(r.content)['build']
+        resonse = requests.post(url=self._url,
+                                auth=self._auth,
+                                cookies=self._cookies,
+                                params=params,
+                                files=files)
+        build = json.loads(resonse.content)['build']
         return build
