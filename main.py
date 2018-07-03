@@ -1,8 +1,8 @@
 #!/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7
 import json
-from downloader import UTorrent
+from downloader import Transmission
 from showsapi import ShowAPI
-from config import UTORRENT_CREDENTIALS, SHOWS_JSON_FILE
+from config import TRANSMISSION_SETTINGS, SHOWS_JSON_FILE
 
 
 class ShowDownloader(object):
@@ -14,10 +14,10 @@ class ShowDownloader(object):
         '''
         Initializes the class.
         Gets show json.
-        Initializes UTorrent class and ShowAPI class.
+        Initializes Transmission class and ShowAPI class.
         '''
         self.get_shows_json()
-        self.utorrent = UTorrent(**UTORRENT_CREDENTIALS)
+        self.transmission = Transmission(**TRANSMISSION_SETTINGS)
         self.showsapi = ShowAPI(self.shows, self.download_episode)
 
     def get_shows_json(self):
@@ -31,7 +31,7 @@ class ShowDownloader(object):
     def download_episode(self, show, season, episode, torrent):
         '''
         Callback for showsapi on each episode.
-        Gets the episode and runs the download on utorrent.
+        Gets the episode and runs the download on transmission.
         Then updates the shows dictionary.
 
         :param str show: show name
@@ -40,7 +40,7 @@ class ShowDownloader(object):
         :param dict torrent: torrent dictionary
         '''
         print 'Downloading %s' % torrent['release']
-        self.utorrent.add_torrent(torrent['download']['magnet'])
+        self.transmission.add_torrent(torrent['download']['magnet'])
         if season == self.shows[show]['season']:
             if episode >= self.shows[show]['episode']:
                 self.shows[show]['episode'] = episode + 1

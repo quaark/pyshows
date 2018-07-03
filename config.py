@@ -11,3 +11,11 @@ UTORRENT_CREDENTIALS = {
     'user': UTORRENT_USER,
     'password': UTORRENT_PASS
 }
+
+TRANSMISSION_SETTINGS = {
+    'address': 'localhost',
+    'port': 9091,
+    'download_dir': '',
+    'user': None,
+    'password': None
+}

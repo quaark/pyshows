@@ -2,9 +2,36 @@ import re
 import json
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
+import transmissionrpc
 
 # Disable the Insecure Connection warning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+class Transmission(object):
+    '''
+    Class for connecting to transmission.
+    '''
+
+    def __init__(self, address='localhost', port=9091, download_dir='', user=None, password=None):
+        '''
+        Initializes the class and creates a new session with the
+        utorrent server.
+
+        :param str address: address of the server
+        :param int port: port of the server
+        :param str user: user of the server
+        :param str password: password of the server
+        '''
+        self.download_dir = download_dir
+        self._client = transmissionrpc.Client(address=address, port=port, user=user, password=password)
+
+    def add_torrent(self, link):
+        '''
+        Adds a torrent for utorrent to download.
+
+        :param str link: Magnet link or file path to add to utorrent
+        '''
+        return torrent_client.add_torrent(link, download_dir=self.download_dir)
 
 
 class UTorrent(object):
